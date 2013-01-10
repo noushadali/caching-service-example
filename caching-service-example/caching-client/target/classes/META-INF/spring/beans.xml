@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://camel.apache.org/schema/spring
+    http://camel.apache.org/schema/spring/camel-spring.xsd
+    http://www.springframework.org/schema/osgi
+    http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+
+    <!-- Get a reference to the Caching Service -->
+    <osgi:reference id="cacheManager"
+                    interface="net.sf.ehcache.CacheManager" />
+
+    <!-- Instantiate the client -->
+    <bean id="cacheClient"
+          class="com.cc.camel.caching.CacheClient"
+          init-method="init"
+          destroy-method="destroy">
+        <property name="cacheManager" ref="cacheManager" />
+    </bean>
+
+</beans>
