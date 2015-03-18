@@ -1,0 +1,1 @@
+An example Apache Karaf service for caching arbitrary objects, includes statistics
